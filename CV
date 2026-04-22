@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: sans-serif;
+      font-size: 12px;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .col-1 {
+      width: 20%;
+      background: #f0f0f0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .col-2 {
+      width: 30%;
+      background: #e0e0e0;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      min-width: 80px;
+      overflow: hidden;
+    }
+
+    .col-2 p {
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    .col-3 {
+      width: 50%;
+      background: #d0d0d0;
+      padding: 20px;
+      height: 100%;
+      overflow-y: scroll;
+      font-size: 20px;
+      min-width: 80px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ffc300;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #faa307;
+    }
+
+    .col-3 p {
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .resizer {
+      width: 4px;
+      background: #ccc;
+      cursor: col-resize;
+      flex-shrink: 0;
+      position: relative;
+      transition: background 0.15s;
+    }
+
+    .resizer:hover,
+    .resizer.dragging {
+      background: #999;
+    }
+
+    /* Drag handle dots */
+    .resizer::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 24px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #aaa 0px,
+        #aaa 2px,
+        transparent 2px,
+        transparent 5px
+      );
+    }
+    .site-title {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    /* Nav */
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-bottom: 4px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Works toggle */
+    .works-toggle {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Submenu */
+    .submenu {
+      list-style: none;
+      display: none;
+      padding-left: 10px;
+      margin-top: 4px;
+    }
+
+    .submenu.open {
+      display: block;
+    }
+
+    .submenu li {
+      margin-bottom: 4px;
+    }
+
+    .submenu li a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .submenu li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="col-1">
+      <a href="/" class="site-title">CV - Andy Brunkowski</a>
+      <nav>
+        <ul>
+          <li><a href="#">cv</a></li>
+          <li>
+            <span class="works-toggle" onclick="toggleWorks()">works</span>
+            <ul class="submenu" id="works-submenu">
+              <li><a href="#">Burger King</a></li>
+              <li><a href="#">SPA</a></li>
+              <li><a href="#">Visit Brussels</a></li>
+              <li><a href="#">POST NL</a></li>
+            </ul>
+          </li>
+          <li><a href="#">video</a></li>
+          <li><a href="#">photography</a></li>
+          <li><a href="#">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-2">
+<p>CV</p>
+      <p>Andy Brunkowski is a Brussels-based creative director working across film, photography, and brand identity. His work spans cultural institutions, international campaigns, and independent projects.</p>
+    </div>
+    <div class="resizer" id="resizer"></div>
+    <div class="col-3">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.</p>
+      <p>Nulla gravida orci a odio, et tempus feugiat. Nullam varius turpis molestie lorem laoreet, sed condimentum arcu tincidunt. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.</p>
+      <p>Nulla fringilla purus at leo dignissim congue. Mauris elementum accumsan leo vel tempor. Sit amet cursus nisl aliquam. Aliquam metus eros, pretium sed purus malesuada, volutpat ornare nisl. Phasellus egestas ligula a risus pulvinar, id tincidunt libero ullamcorper.</p>
+      <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh.</p>
+      <p>Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Nullam in massa. Suspendisse vitae nibh pretium purus ornare fringilla quis nec felis.</p>
+      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo quis pede. Donec interdum, metus et hendrerit aliquet, dolor diam sagittis ligula.</p>
+      <p>Etiam luctus ante at sapien tempus, eu cursus nisl posuere. Integer euismod, velit vel suscipit efficitur, risus velit molestie orci, non volutpat urna augue nec tortor. Sed blandit lorem eu eros scelerisque, ac tincidunt ligula placerat.</p>
+      <p>Fusce lobortis lorem at ipsum semper sagittis. Vestibulum faucibus libero nec purus tincidunt, vel lacinia elit dapibus. Ut consectetur velit eu malesuada consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean lacinia mauris vel est. Suspendisse eu nisl.</p>
+      <p>Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Proin eget orci eu lorem consequat tincidunt. Maecenas faucibus mollis interdum.</p>
+      <p>Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+  <script>
+    function toggleWorks() {
+      const submenu = document.getElementById('works-submenu');
+      submenu.classList.toggle('open');
+    }
+
+    const resizer = document.getElementById('resizer');
+    const col2 = document.querySelector('.col-2');
+    const col3 = document.querySelector('.col-3');
+    const container = document.querySelector('.container');
+
+    let isResizing = false;
+
+    resizer.addEventListener('mousedown', (e) => {
+      isResizing = true;
+      resizer.classList.add('dragging');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isResizing) return;
+
+      const containerRect = container.getBoundingClientRect();
+      const col1Width = document.querySelector('.col-1').offsetWidth;
+      const resizerWidth = resizer.offsetWidth;
+
+      // Total available width for col2 + col3
+      const available = containerRect.width - col1Width - resizerWidth;
+
+      // Mouse position relative to start of col2
+      const mouseX = e.clientX - containerRect.left - col1Width;
+
+      const minPx = 80;
+      const clampedX = Math.min(Math.max(mouseX, minPx), available - minPx);
+
+      const col2Pct = (clampedX / containerRect.width) * 100;
+      const col3Pct = ((available - clampedX) / containerRect.width) * 100;
+
+      col2.style.width = col2Pct + '%';
+      col3.style.width = col3Pct + '%';
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!isResizing) return;
+      isResizing = false;
+      resizer.classList.remove('dragging');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    });
+  </script>
+</body>
+</html>
