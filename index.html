@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grid</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split Layout</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    background: #fff;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 300px);
-    grid-template-rows: repeat(3, 300px);
-  }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
 
-  .block {
-    width: 300px;
-    height: 300px;
-    border: 1px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
-    font-size: 14px;
-    color: #000;
-  }
-</style>
+    .left {
+      width: 30%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 40px;
+    }
+
+    .right {
+      width: 70%;
+      margin-left: 30%;
+      height: 100vh;
+      overflow-y: scroll;
+      padding: 40px;
+    }
+
+    .right-content {
+      height: 2000px;
+    }
+  </style>
 </head>
 <body>
-  <div class="grid">
-    <div class="block">Block 1</div>
-    <div class="block">Block 2</div>
-    <div class="block">Block 3</div>
-    <div class="block">Block 4</div>
-    <div class="block">Block 5</div>
-    <div class="block">Block 6</div>
-    <div class="block">Block 7</div>
-    <div class="block">Block 8</div>
-    <div class="block">Block 9</div>
+
+  <div class="container">
+
+    <div class="left">
+      <h2>Fixed Panel</h2>
+      <p>This panel stays fixed while you scroll the right side.</p>
+    </div>
+
+    <div class="right">
+      <div class="right-content">
+        <h2>Scrollable Panel</h2>
+        <p>Scroll down to test. This content area is 2000px tall.</p>
+      </div>
+    </div>
+
   </div>
+
 </body>
 </html>
