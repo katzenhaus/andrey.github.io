@@ -11,261 +11,242 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
-      font-family: sans-serif;
-      font-size: 12px;
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: none; }
+    ::-webkit-scrollbar-thumb { background: #736f4e; }
+
+    body {
+      background: #e8e4df;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
 
-    .container {
+    .site-wrapper {
+      width: 1000px;
+      height: 800px;
       display: flex;
-      height: 100vh;
+      background: #f2ede8;
       overflow: hidden;
     }
 
-    .col-1 {
+    /* LEFT COLUMN — menu, 20% */
+    .col-left {
       width: 20%;
-      background: #f0f0f0;
-      padding: 20px;
+      height: 100%;
+      border-right: 1px solid #ccc7c0;
+      padding: 40px 20px 40px 24px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: flex-end;
+      text-align: right;
     }
 
-    .col-2 {
-      width: 30%;
-      background: #e0e0e0;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      min-width: 80px;
-      overflow: hidden;
-    }
-
-    .col-2 p {
-      font-size: 20px;
-      line-height: 1.5;
-    }
-
-    .col-3 {
-      width: 50%;
-      background: #d0d0d0;
-      padding: 20px;
-      height: 100%;
-      overflow-y: scroll;
-      font-size: 20px;
-      min-width: 80px;
-    }
-
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #ffc300;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #faa307;
-    }
-
-    .col-3 p {
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-
-    .resizer {
-      width: 4px;
-      background: #ccc;
-      cursor: col-resize;
-      flex-shrink: 0;
-      position: relative;
-      transition: background 0.15s;
-    }
-
-    .resizer:hover,
-    .resizer.dragging {
-      background: #999;
-    }
-
-    /* Drag handle dots */
-    .resizer::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 2px;
-      height: 24px;
-      background: repeating-linear-gradient(
-        to bottom,
-        #aaa 0px,
-        #aaa 2px,
-        transparent 2px,
-        transparent 5px
-      );
-    }
     .site-title {
-      display: block;
+      font-family: Verdana, Geneva, sans-serif;
       font-size: 12px;
       font-weight: bold;
+      color: #1a1a1a;
+      line-height: 1.4;
+      margin-bottom: 36px;
+      letter-spacing: 0.01em;
       text-decoration: none;
-      color: #000;
-      margin-bottom: 20px;
+      transition: color 0.15s;
     }
 
-    /* Nav */
-    nav ul {
-      list-style: none;
+    .site-title:hover {
+      color: #888;
     }
 
-    nav ul li {
-      margin-bottom: 4px;
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
     }
 
-    nav ul li a {
+    nav a {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 12px;
+      color: #1a1a1a;
       text-decoration: none;
-      color: #000;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
     }
 
-    nav ul li a:hover {
-      text-decoration: underline;
+    nav a:hover {
+      color: #888;
     }
 
-    /* Works toggle */
-    .works-toggle {
+    /* Ideas expandable */
+    .ideas-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .ideas-toggle {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 12px;
+      color: #1a1a1a;
+      letter-spacing: 0.02em;
       cursor: pointer;
       user-select: none;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: right;
+      transition: color 0.15s;
     }
 
-    /* Submenu */
-    .submenu {
-      list-style: none;
-      display: none;
-      padding-left: 10px;
-      margin-top: 4px;
+    .ideas-toggle:hover {
+      color: #888;
     }
 
-    .submenu.open {
-      display: block;
+    .ideas-submenu {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
+      margin-top: 0;
     }
 
-    .submenu li {
-      margin-bottom: 4px;
+    .ideas-submenu.open {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 10px;
     }
 
-    .submenu li a {
+    .ideas-submenu a {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 11px;
+      color: #999;
       text-decoration: none;
-      color: #000;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
     }
 
-    .submenu li a:hover {
-      text-decoration: underline;
+    .ideas-submenu a:hover {
+      color: #1a1a1a;
+    }
+
+    /* RIGHT COLUMN — content, 80% */
+    .col-right {
+      width: 80%;
+      height: 100%;
+      padding: 60px 64px;
+      overflow-y: auto;
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      color: #1a1a1a;
+    }
+
+    .col-right h1 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+
+    .col-right p {
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    .col-right p.muted {
+      color: #999;
+      font-size: 14px;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid #ccc7c0;
+      margin: 36px 0;
+    }
+
+    .placeholder-block {
+      width: 100%;
+      height: 140px;
+      background: #e2ddd8;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="col-1">
-      <a href="/" class="site-title">Andy Brunkowski</a>
+  <div class="site-wrapper">
+
+    <!-- LEFT: menu -->
+    <aside class="col-left">
+      <a href="index.html" class="site-title">Andy<br>Brunkowski</a>
       <nav>
-        <ul>
-          <li><a href="CV">cv</a></li>
-          <li>
-            <span class="works-toggle" onclick="toggleWorks()">works</span>
-            <ul class="submenu" id="works-submenu">
-              <li><a href="#">Burger King</a></li>
-              <li><a href="#">SPA</a></li>
-              <li><a href="#">Visit Brussels</a></li>
-              <li><a href="#">POST NL</a></li>
-            </ul>
-          </li>
-          <li><a href="#">video</a></li>
-          <li><a href="#">photography</a></li>
-          <li><a href="#">contact</a></li>
-        </ul>
+        <a href="about.html">about</a>
+
+        <div class="ideas-group">
+          <button class="ideas-toggle" onclick="toggleIdeas(this)">ideas</button>
+          <div class="ideas-submenu">
+            <a href="#">Burger King</a>
+            <a href="#">SPA</a>
+            <a href="#">visit.brussels</a>
+            <a href="#">Post NL</a>
+          </div>
+        </div>
+
+        <a href="video.html">video</a>
+        <a href="photography.html">photography</a>
+        <a href="love.html">love</a>
+        <a href="https://instagram.com" target="_blank">instagram</a>
       </nav>
-    </div>
-    <div class="col-2">
-      <p>When entering a new city, fast-food brands typically rely on product-led communication — hero shots, opening promotions, i.e. immediate gratification.
-Insight
-Craving doesn’t start with consumption. It starts with absence.
-When something familiar is missing, people feel it more intensely than when it’s present.
-By removing the product entirely, the campaign disrupts expectations in a category defined by excess.
-The empty space becomes the message, inviting passersby to mentally fill the gap.
-Instead of selling burgers, the campaign sells anticipation—transforming a market entry into a moment of collective curiosity.
-</p>
-    </div>
-    <div class="resizer" id="resizer"></div>
-    <div class="col-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.</p>
-      <p>Nulla gravida orci a odio, et tempus feugiat. Nullam varius turpis molestie lorem laoreet, sed condimentum arcu tincidunt. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.</p>
-      <p>Nulla fringilla purus at leo dignissim congue. Mauris elementum accumsan leo vel tempor. Sit amet cursus nisl aliquam. Aliquam metus eros, pretium sed purus malesuada, volutpat ornare nisl. Phasellus egestas ligula a risus pulvinar, id tincidunt libero ullamcorper.</p>
-      <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh.</p>
-      <p>Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Nullam in massa. Suspendisse vitae nibh pretium purus ornare fringilla quis nec felis.</p>
-      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo quis pede. Donec interdum, metus et hendrerit aliquet, dolor diam sagittis ligula.</p>
-      <p>Etiam luctus ante at sapien tempus, eu cursus nisl posuere. Integer euismod, velit vel suscipit efficitur, risus velit molestie orci, non volutpat urna augue nec tortor. Sed blandit lorem eu eros scelerisque, ac tincidunt ligula placerat.</p>
-      <p>Fusce lobortis lorem at ipsum semper sagittis. Vestibulum faucibus libero nec purus tincidunt, vel lacinia elit dapibus. Ut consectetur velit eu malesuada consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-      <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean lacinia mauris vel est. Suspendisse eu nisl.</p>
-      <p>Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Proin eget orci eu lorem consequat tincidunt. Maecenas faucibus mollis interdum.</p>
-      <p>Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
+    </aside>
+
+    <!-- RIGHT: content -->
+    <main class="col-right">
+      <h1>Selected work.</h1>
+      <p>
+        This is the home of Andy Brunkowski — a space for ideas, images, moving pictures,
+        and things that matter. Everything here is made with care and a certain unhurried
+        attention to what lingers.
+      </p>
+      <p>
+        The work spans photography, video, writing, and whatever falls between those categories
+        when you stop worrying about categories.
+      </p>
+
+      <hr class="divider">
+
+      <div class="placeholder-block">— image placeholder —</div>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+      </p>
+
+      <div class="placeholder-block">— video placeholder —</div>
+
+      <p class="muted">
+        Last updated April 2026.
+      </p>
+    </main>
+
   </div>
+
   <script>
-    function toggleWorks() {
-      const submenu = document.getElementById('works-submenu');
+    function toggleIdeas(btn) {
+      const submenu = btn.nextElementSibling;
       submenu.classList.toggle('open');
     }
-
-    const resizer = document.getElementById('resizer');
-    const col2 = document.querySelector('.col-2');
-    const col3 = document.querySelector('.col-3');
-    const container = document.querySelector('.container');
-
-    let isResizing = false;
-
-    resizer.addEventListener('mousedown', (e) => {
-      isResizing = true;
-      resizer.classList.add('dragging');
-      document.body.style.cursor = 'col-resize';
-      document.body.style.userSelect = 'none';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isResizing) return;
-
-      const containerRect = container.getBoundingClientRect();
-      const col1Width = document.querySelector('.col-1').offsetWidth;
-      const resizerWidth = resizer.offsetWidth;
-
-      // Total available width for col2 + col3
-      const available = containerRect.width - col1Width - resizerWidth;
-
-      // Mouse position relative to start of col2
-      const mouseX = e.clientX - containerRect.left - col1Width;
-
-      const minPx = 80;
-      const clampedX = Math.min(Math.max(mouseX, minPx), available - minPx);
-
-      const col2Pct = (clampedX / containerRect.width) * 100;
-      const col3Pct = ((available - clampedX) / containerRect.width) * 100;
-
-      col2.style.width = col2Pct + '%';
-      col3.style.width = col3Pct + '%';
-    });
-
-    document.addEventListener('mouseup', () => {
-      if (!isResizing) return;
-      isResizing = false;
-      resizer.classList.remove('dragging');
-      document.body.style.cursor = '';
-      document.body.style.userSelect = '';
-    });
   </script>
 </body>
 </html>
